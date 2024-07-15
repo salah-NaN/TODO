@@ -1,0 +1,13 @@
+version: "3"
+services:
+  db:
+    image: mysql:8.0
+    container_name: TODO-OMC
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3311:3306"
+    expose:
+      - "3311"
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+    restart: always
