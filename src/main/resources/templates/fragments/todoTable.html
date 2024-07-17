@@ -4,19 +4,30 @@
 <head th:replace="fragments/head :: head"></head>
 
 <body th:fragment="todoTable">
-
 <table class="table table-striped">
     <thead>
     <tr>
         <th>
             <a th:href="@{/allFilters(sortField='title', sortDirection=${reverseSortDirection},
             todoTitle=${todoTitle}, todoUsername=${todoUsername}, page=${currentPage}, size=${size})}">
-                Title
+                Título
             </a>
         </th>
-        <th scope="col">Usuario</th>
-        <th scope="col">País</th>
+        <th scope="col">
+            <a th:href="@{/allFilters(sortField='user.username', sortDirection=${reverseSortDirection},
+            todoTitle=${todoTitle}, todoUsername=${todoUsername}, page=${currentPage}, size=${size})}">
+                Nombre de usuario
+            </a>
+        </th>
+        <th scope="col">
+            <a th:href="@{/allFilters(sortField='user.address.country', sortDirection=${reverseSortDirection},
+            todoTitle=${todoTitle}, todoUsername=${todoUsername}, page=${currentPage}, size=${size})}">
+                País
+            </a>
+        </th>
         <th scope="col">Completado</th>
+        <th>Editar</th>
+        <th>Borrar</th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +36,18 @@
         <td th:text="${todo.user.username}"></td>
         <td th:text="${todo.user.address.country}"></td>
         <td th:text="${todo.completed}"></td>
+        <td>
+            <a th:href="@{/editTodo(id=${todo.id})}" >Editar</a>
+        </td>
+        <td>
+<!--
+            <a th:href="@{/deleteTodo(id=${todo.id}, username=${todo.user.username})}" >Borrar</a>
+-->
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Borrar
+            </button>
+            <div th:replace="fragments/modal :: modal(Tid=${todo.id}, Tusername=${todo.user.username})"></div>
+        </td>
     </tr>
     </tbody>
 </table>

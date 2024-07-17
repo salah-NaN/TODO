@@ -1,5 +1,7 @@
 package OMC_prueba.TODO.models;
 
+import jakarta.validation.constraints.*;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -10,6 +12,8 @@ public class TodoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "El campo no puede estar vacío")
+    @Size(max = 200, message = "Limitación de 200 caracteres")
     @Column(length = 200, nullable = false)
     private String title;
 

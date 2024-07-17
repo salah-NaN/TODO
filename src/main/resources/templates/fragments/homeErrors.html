@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/head :: head"></head>
+
+
+<body th:fragment="homeErrors">
+
+<div class="alert alert-danger m-auto" th:if="${param.error}">
+    No puedes editar tareas de otros usuarios
+</div>
+
+<div class="alert alert-danger m-auto" th:if="${param.notDeleted}">
+    No puedes borrar tareas de otros usuarios
+</div>
+
+<div th:replace="fragments/bootstrapScript :: bootstrapScript">
+</body>
+</html>

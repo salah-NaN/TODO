@@ -4,33 +4,21 @@
 <body th:fragment="nextPrevButtons">
 <div class="d-flex justify-content-between">
 
-    <!--<a
-            class="btn btn-secondary"
-            th:classappend="${page == 1} ? ' disabled' : ''"
-            th:href="@{/allFilters(sortField='title', sortDirection=${reverseSortDirection},
-     todoTitle=${todoTitle}, todoUsername=${todoUsername}, page=${currentPage}, size=${size})}">
+
+    <a class="btn btn-secondary"
+        th:classappend="${currentPage == 0} ? ' disabled' : ''"
+        th:href="@{/allFilters(sortField=${sortField == null ? 'title' : sortField}, sortDirection=${sortDirection},
+        todoTitle=${todoTitle}, todoUsername=${todoUsername}, page=${currentPage > 0 ? currentPage - 1 : 0}, size=${size})}">
         Previous
-    </a><a
-            class="btn btn-secondary"
-            th:classappend="${page < totalPages } ? '' : 'disabled'"
-            th:href="@{/allFilters(sortField='title', sortDirection=${reverseSortDirection},
-     todoTitle=${todoTitle}, todoUsername=${todoUsername}, page=${currentPage}, size=${size})}">
+    </a>
+
+    <a
+        class="btn btn-secondary"
+        th:classappend="${currentPage == (totalPages - 1) } ? 'disabled' : ''"
+        th:href="@{/allFilters(sortField=${sortField == null ? 'title' : sortField}, sortDirection=${sortDirection},
+        todoTitle=${todoTitle}, todoUsername=${todoUsername}, page=${currentPage < (totalPages - 1) ? currentPage + 1 : (totalPages - 1)}, size=${size})}">
         Next
-    </a>-->
-
-
-    <div class="d-flex justify-content-between">
-        <a class="btn btn-secondary"
-           th:classappend="${page == 1} ? ' disabled' : ''"
-           th:href="@{/allFilters(sortField=${sortField}, sortDirection=${reverseSortDirection}, todoTitle=${todoTitle}, todoUsername=${todoUsername}, page=${currentPage - 1}, size=${size})}">
-            Previous
-        </a>
-        <a class="btn btn-secondary"
-           th:classappend="${page >= totalPages} ? ' disabled' : ''"
-           th:href="@{/allFilters(sortField=${sortField}, sortDirection=${sortDirection}, todoTitle=${todoTitle}, todoUsername=${todoUsername}, page=${currentPage + 1}, size=${size})}">
-            Next
-        </a>
-    </div>
+    </a>
 
 </div>
 <div th:replace="fragments/bootstrapScript :: bootstrapScript">

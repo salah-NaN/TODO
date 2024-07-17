@@ -14,7 +14,10 @@ public class UserModel {
     private Long Id;
 
     private String name;
+
+    @Column(unique = true)
     private String username;
+
     private String password;
 
     public String getName() {

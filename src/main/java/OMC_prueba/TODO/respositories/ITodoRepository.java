@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ITodoRepository extends JpaRepository<TodoModel, Long> {
-    List<TodoModel> findByTitleContainingAndUserUsernameLike(String title, String username);
-    List<TodoModel> findByTitleContaining(String title);
+    Page<TodoModel> findByTitleContainingAndUserUsernameLike(String title, String username, Pageable pageable);
+    Page<TodoModel> findByTitleContaining(String title, Pageable pageable);
     Page<TodoModel> findAll(Pageable pageable);
 
 }
