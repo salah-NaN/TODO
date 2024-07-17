@@ -41,7 +41,7 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
             </ul>
             <!-- Left links -->
 
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center" sec:authorize="!isAuthenticated()">
                 <a th:href="@{/login}"
                         data-mdb-ripple-init type="button" class="btn btn-link px-3 me-2">
                     Iniciar sesión
@@ -53,7 +53,7 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
             </div>
 
             <form th:action="@{/logout}" sec:authorize="isAuthenticated()" method="post">
-                <input type="submit" value="Sign Out"/>
+                <input class="btn btn-danger" type="submit" value="Sign Out"/>
             </form>
 
 

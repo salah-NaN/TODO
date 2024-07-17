@@ -3,22 +3,23 @@
 <head th:replace="fragments/head :: head"></head>
 <body th:fragment="filters">
 
-<form th:action="@{/allFilters(sortField='title', sortDirection='asc', page='1', size=${size})}" method="get">
-  <label for="todoTitle">Title:</label>
-  <input type="text" id="todoTitle" name="todoTitle" th:value="${todoTitle}">
+<form class="mt-3" th:action="@{/allFilters(sortField='title', sortDirection='asc', page='1', size=${size})}" method="get">
+    <div class="row  justify-content-start align-items-end ">
+        <div class=" col-auto ">
+            <label class="form-label" for="todoTitle">Título</label>
+            <input class="form-control" type="text" id="todoTitle" name="todoTitle" th:value="${todoTitle}">
+        </div>
+        <div class=" col-auto ">
+            <label class="form-label" for="todoUsername">Nombre de usuario</label>
+            <input class="form-control" type="text" id="todoUsername" name="todoUsername" th:value="${todoUsername}">
+        </div>
+        <button class=" col-auto btn btn-info" style="height:38px;" type="submit">Apply</button>
 
-  <label for="todoUsername">Username:</label>
-  <input type="text" id="todoUsername" name="todoUsername" th:value="${todoUsername}">
+    </div>
 
-  <button type="submit">Apply</button>
+
 </form>
 
-<a th:href="@{/addTodo}" >Crear TODO</a>
-
-
-
-
-
-<div th:replace="fragments/bootstrapScript :: bootstrapScript">
+<div th:replace="fragments/bootstrapScript :: bootstrapScript"></div>
 </body>
 </html>

@@ -4,30 +4,27 @@
 <body>
 <div th:replace="fragments/navBar :: navBar"></div>
 
+<div class="container mt-5"><h1 class="text-center mb-4">Editar TODO</h1>
 
-<h1>Editar TODO</h1>
+    <form th:action="@{/editTodo}" th:object="${editTodo}" method="post" class="mx-auto" style="max-width: 400px;">
 
-<form th:action="@{/editTodo}" th:object="${editTodo}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{user}">
 
-    <input type="hidden" th:field="*{id}">
-    <input type="hidden" th:field="*{user}">
-
-    <label for="title" class="mb-2 col-6">Título</label>
-    <input th:field="*{title}" id="title" name="title" class="form-control mb-2 col-6">
-    <div class=" alert alert-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}" ></div>
+        <label for="title" class="mb-2 col-6 form-label">Título</label>
+        <input th:field="*{title}" id="title" name="title" class="form-control mb-2 col-6">
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
 
 
-    <label for="completed" class="mb-2 col-6">Completada</label>
-    <select class="form-control mb-2 col-6" id="completed" th:field="*{completed}">
-        <option th:value="${true}"
-        >Completado</option>
-        <option th:value="${false}"
-        >No completado</option>
-    </select>
+        <label for="completed" class="mb-2 col-6 form-label">Completada</label>
+        <select class="form-control mb-2 col-6" id="completed" th:field="*{completed}">
+            <option th:value="${true}">Completado</option>
+            <option th:value="${false}">No completado</option>
+        </select>
 
-    <button class="col-2 btn btn-success">Editar</button>
-</form>
+        <button class="col-2 btn btn-success">Editar</button>
+    </form>
 
-<div th:replace="fragments/bootstrapScript :: bootstrapScript">
+    <div th:replace="fragments/bootstrapScript :: bootstrapScript"></div>
 </body>
 </html>

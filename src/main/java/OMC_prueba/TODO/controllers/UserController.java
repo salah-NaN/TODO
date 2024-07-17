@@ -30,14 +30,15 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerPost( @ModelAttribute("newUser") UserModel newUser,
-                                Model model){
+                                Model model
+                                ){
 
 
         // comprobar que el usuario no exista
         UserModel potentialUser = this.userService.getUserByUsername(newUser.getUsername());
         if(potentialUser != null){
             // volvemos al formulario
-            return "register";
+            return "redirect:/register?error";
         }
         // encriptamos la contraseña
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));

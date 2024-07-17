@@ -2,6 +2,7 @@ package OMC_prueba.TODO.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.util.List;
 
@@ -15,9 +16,11 @@ public class UserModel {
 
     private String name;
 
+    @NotEmpty(message = "El campo no puede estar vacío")
     @Column(unique = true)
     private String username;
 
+    @NotEmpty(message = "El campo no puede estar vacío")
     private String password;
 
     public String getName() {

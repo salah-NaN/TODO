@@ -5,34 +5,35 @@
 <body>
 <div th:replace="fragments/navBar :: navBar"></div>
 
-    <h1>Iniciar sesión</h1>
-    <form th:action="@{/login}" method="post">
+<div class="container mt-5"><h1 class="text-center mb-4">Iniciar sesión</h1>
+    <form th:action="@{/login}" method="post" class="mx-auto" style="max-width: 400px;">
 
-        <div th:if="${param.error}">
+        <div th:if="${param.error}" class="alert alert-danger" role="alert">
             Nombre de usuario y/o contraseña no válidos.
         </div>
-        <div th:if="${param.logout}">
+        <div th:if="${param.logout}" class="alert alert-info" role="alert">
             Has cerrado sesión.
         </div>
 
 
-        <div>
-            <label for="username">Nombre de usuario</label>
+        <div class="mb-3">
+            <label for="username" class="form-label">Nombre de usuario</label>
             <input type="text"
                    id="username"
                    name="username"
                    class="form-control" />
         </div>
-        <div>
-            <label for="password">Contraseña</label>
+        <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
             <input type="password"
                    id="password"
                    name="password"
                    class="form-control" />
         </div>
-        <div>
-            <button type="submit">Iniciar sesión</button>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
         </div>
-</form>
+    </form>
+</div>
 </body>
 </html>

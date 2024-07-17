@@ -4,35 +4,31 @@
 <body>
 <div th:replace="fragments/navBar :: navBar"></div>
 
-    <h1>Editar TODO</h1>
+<div class="container mt-5"><h1 class="text-center mb-4">Añadir TODO</h1>
 
-    <form th:action="@{/addTodo}" th:object="${newTodo}" method="post">
+    <form th:action="@{/addTodo}" th:object="${newTodo}" method="post" class="mx-auto" style="max-width: 400px;">
 
-        <label for="title" class="mb-2 col-6">Título</label>
+        <label for="title" class="mb-2 col-6 form-label">Título</label>
         <input th:field="*{title}" id="title" name="title" class="form-control mb-2 col-6">
-        <div class=" alert alert-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}" ></div>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
 
-        <label for="user" class="mb-2 col-6">Usuario</label>
-        <select class="form-control mb-2 col-6" id="user" th:field="*{user}" >
+        <label for="user" class="mb-2 col-6 form-label">Usuario</label>
+        <select class="form-control mb-2 col-6" id="user" th:field="*{user}">
             <option th:each="user: ${userList}"
                     th:value="${user.id}"
-                    th:text="${user.username}"
-            ></option>
+                    th:text="${user.username}"></option>
         </select>
 
-        <label for="completed" class="mb-2 col-6">Completada</label>
+        <label for="completed" class="mb-2 col-6 form-label">Completada</label>
         <select class="form-control mb-2 col-6" id="completed" th:field="*{completed}">
-            <option th:value="${true}"
-            >Completado</option>
-            <option th:value="${false}"
-            >No completado</option>
+            <option th:value="${true}">Completado</option>
+            <option th:value="${false}">No completado</option>
         </select>
 
         <button class="col-2 btn btn-success">Crear</button>
-
-
     </form>
 
-<div th:replace="fragments/bootstrapScript :: bootstrapScript">
+    <div th:replace="fragments/bootstrapScript :: bootstrapScript"></div>
 </body>
 </html>
+

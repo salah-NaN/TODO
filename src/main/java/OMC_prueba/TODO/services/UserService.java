@@ -22,10 +22,7 @@ public class UserService {
     }
 
     public void saveUser(UserModel user){
-        // considero que la validacion del formulario es una capa para recibir al menos
-        // el username y la password pero aun así en la capa interna del back-end confirmo
-        // que estas variables no estén vacías
-
+        // validacion en capa interna del back-end
         if(!user.getUsername().isEmpty() && !user.getUsername().isEmpty()){
             this.userRepository.save(user);
         } else {

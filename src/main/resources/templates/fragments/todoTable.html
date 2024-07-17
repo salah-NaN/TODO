@@ -4,6 +4,9 @@
 <head th:replace="fragments/head :: head"></head>
 
 <body th:fragment="todoTable">
+
+<a class="btn btn-primary my-4" th:href="@{/addTodo}" >Crear TODO</a>
+
 <table class="table table-striped">
     <thead>
     <tr>
@@ -35,14 +38,13 @@
         <th th:text="${todo.title}" scope="row"></th>
         <td th:text="${todo.user.username}"></td>
         <td th:text="${todo.user.address.country}"></td>
-        <td th:text="${todo.completed}"></td>
         <td>
-            <a th:href="@{/editTodo(id=${todo.id})}" >Editar</a>
+            <input type="checkbox" class="form-check-input" disabled th:checked="${todo.completed}">
         </td>
         <td>
-<!--
-            <a th:href="@{/deleteTodo(id=${todo.id}, username=${todo.user.username})}" >Borrar</a>
--->
+            <a class="btn btn-primary" th:href="@{/editTodo(id=${todo.id})}">Editar</a>
+        </td>
+        <td>
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Borrar
             </button>
